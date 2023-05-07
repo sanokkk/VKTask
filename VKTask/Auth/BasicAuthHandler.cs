@@ -35,7 +35,7 @@ namespace VKTask.Auth
                     return AuthenticateResult.Fail("Unauthorized");
                 
                 var claims = new[] {
-                new Claim(ClaimTypes.Name, userName)};
+                new Claim(ClaimTypes.Name, userName), new Claim("Id", user.Id.ToString())};
                 var identity = new ClaimsIdentity(claims, Scheme.Name);
                 var principal = new ClaimsPrincipal(identity);
                 var ticket = new AuthenticationTicket(principal, Scheme.Name);

@@ -8,10 +8,12 @@ namespace VKTask.Domain.Models
 {
     public class UserState
     {
-        public int Id { get; init; }
+        public int UserStateId { get; init; }
 
-        public int Code { get; init; }
+        public string Code { get; init; }
 
         public string Description { get; set; }
+
+        public ICollection<User> Users { get; set; }
     }
 }

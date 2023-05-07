@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using VKTask.Auth;
 using VKTask.DAL;
+using VKTask.DAL.Interfaces;
+using VKTask.DAL.Repos;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,7 @@ builder.Services.AddRouting(r =>
 builder.Services.AddDbContext<ApplicationDbContext>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("Pg")));
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<IUserRepo, UserRepo>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -3,15 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VKTask", "VKTask\VKTask.csproj", "{B56986ED-2CC5-4409-956C-8374953D44DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VKTask", "VKTask\VKTask.csproj", "{B56986ED-2CC5-4409-956C-8374953D44DD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VKTask.Domain", "VKTask.Domain", "{E5A9FB10-A87B-4ED6-8CEA-E7AC485D0D83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VKTask.Domain", "VKTask.Domain\VKTask.Domain.csproj", "{98C4D185-772A-416C-B472-DB9C4BFBF12F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VKTask.Domain", "VKTask.Domain\VKTask.Domain.csproj", "{98C4D185-772A-416C-B472-DB9C4BFBF12F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VKTask.DAL", "VKTask.DAL", "{AB10ED5E-41DD-4409-BC3B-91DB85D1ABA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VKTask.DAL", "VKTask.DAL\VKTask.DAL.csproj", "{D927E80C-5495-4516-9FDA-DDE3CDDCE728}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VKTask.DAL", "VKTask.DAL\VKTask.DAL.csproj", "{D927E80C-5495-4516-9FDA-DDE3CDDCE728}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VKTask.Service", "VKTask.Service", "{00653F2C-545D-4DE0-AE9B-445DBA9B5772}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VKTask.Service", "VKTask.Service\VKTask.Service.csproj", "{7345A3B6-63F8-42AC-B7C5-B66B658B201C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +35,10 @@ Global
 		{D927E80C-5495-4516-9FDA-DDE3CDDCE728}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D927E80C-5495-4516-9FDA-DDE3CDDCE728}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D927E80C-5495-4516-9FDA-DDE3CDDCE728}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7345A3B6-63F8-42AC-B7C5-B66B658B201C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7345A3B6-63F8-42AC-B7C5-B66B658B201C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7345A3B6-63F8-42AC-B7C5-B66B658B201C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7345A3B6-63F8-42AC-B7C5-B66B658B201C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,6 +46,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{98C4D185-772A-416C-B472-DB9C4BFBF12F} = {E5A9FB10-A87B-4ED6-8CEA-E7AC485D0D83}
 		{D927E80C-5495-4516-9FDA-DDE3CDDCE728} = {AB10ED5E-41DD-4409-BC3B-91DB85D1ABA7}
+		{7345A3B6-63F8-42AC-B7C5-B66B658B201C} = {00653F2C-545D-4DE0-AE9B-445DBA9B5772}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6367D1A4-90F1-482B-9A46-AA6BA2B8E3AF}

@@ -8,6 +8,7 @@ namespace VKTask.DAL
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):
             base(options)
         {
+            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
@@ -22,49 +23,46 @@ namespace VKTask.DAL
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<User>().HasOne<UserGroup>(o => o.UserGroup)
-                .WithMany()
+                .WithMany(m => m.Users)
                 .HasForeignKey(f => f.UserGroupId);
             modelBuilder.Entity<User>().HasOne<UserState>(o => o.UserState)
-                .WithMany()
+                .WithMany(m => m.Users)
                 .HasForeignKey(f => f.UserStateId);
 
             modelBuilder.Entity<User>().HasKey(k => k.Id);
-            modelBuilder.Entity<UserGroup>().HasKey(k => k.Id);
-            modelBuilder.Entity<UserState>().HasKey(k => k.Id);
+            modelBuilder.Entity<User>().ToTable("users");
 
-            var userStates = new UserState[]
+            modelBuilder.Entity<UserGroup>().HasKey(k => k.UserGroupId);
+            modelBuilder.Entity<UserGroup>().ToTable("user_groups");
+
+            modelBuilder.Entity<UserState>().HasKey(k => k.UserStateId);
+            modelBuilder.Entity<UserState>().ToTable("user_states");
+
+            modelBuilder.Entity<UserGroup>().HasData(
+                new UserGroup()
             {
+                UserGroupId = 1,
+                Code = "Admin",
+                Description = "User which has all rights for actions"
+            }, new UserGroup()
+            {
+                UserGroupId = 2,
+                Code = "User",
+                Description = "Common user"
+            });
+            modelBuilder.Entity<UserState>().HasData(
                 new UserState()
                 {
-                    Id = 1,
-                    Code = 1,
-                    Description = "Active"
+                    UserStateId = 1,
+                    Code = "Active",
+                    Description = "Active user"
                 },
                 new UserState()
                 {
-                    Id = 2,
-                    Code = 2,
-                    Description = "Blocked"
-                }
-            };
-
-            var userGroups = new UserGroup[] {
-                new UserGroup()
-                {
-                    Id = 1,
-                    Code = 1,
-                    Description = "Admin"
-                },
-                new UserGroup()
-                {
-                    Id = 2,
-                    Code = 2,
-                    Description = "User"
-                }
-            };
-
-            modelBuilder.Entity<UserGroup>().HasData(userGroups);
-            modelBuilder.Entity<UserState>().HasData(userStates);
+                    UserStateId = 2,
+                    Code = "Blocked",
+                    Description = "Blocked user (deleted)"
+                });
 
             modelBuilder.Entity<User>().HasData(new User()
             {
@@ -72,8 +70,8 @@ namespace VKTask.DAL
                 Login = "sanokkk" ,
                 Password = "20020918", 
                 CreatedDate = DateTime.UtcNow,
-                UserGroupId = userGroups[0].Id,
-                UserStateId = userStates[0].Id
+                UserGroupId = 1,
+                UserStateId = 1            
             });
 
         }
