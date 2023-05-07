@@ -64,13 +64,30 @@ namespace VKTask.Controllers
             return (response.IsSuccess) ? Ok(response.Content) : BadRequest();
         }
 
-        [HttpGet("{page}")]
+        [HttpGet]
+        [Route("GetUsers/{page}")]
         public async Task<ActionResult<User[]>> GetAsync([FromRoute]int page = 0)
         {
             var response = new BaseResponse<User[]>();
             try
             {
-                response.Content = await _users.GetAsync();
+                response.Content = await _users.GetAsync(page);
+            }
+            catch (Exception ex)
+            {
+                _logger.Log(LogLevel.Error, ex.Message);
+                response.IsSuccess = false;
+            }
+            return (response.IsSuccess) ? Ok(response.Content) : BadRequest();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetByIdAsync([FromRoute]string id)
+        {
+            var response = new BaseResponse<User>();
+            try
+            {
+                response.Content = await _users.GetByIdAsync(Guid.Parse(id));
             }
             catch (Exception ex)
             {

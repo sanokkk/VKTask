@@ -51,7 +51,7 @@ namespace VKTask.Service.Services
                 
             else
             {
-                throw new HttpRequestException("Нет прав на удаление пользователя");
+                throw new HttpRequestException("No access for action");
             }
             return targetUser;
         }
@@ -66,9 +66,17 @@ namespace VKTask.Service.Services
             }
             catch (Exception ex)
             {
-                throw new ArgumentOutOfRangeException("Объекты отсутствуют");
+                throw new ArgumentOutOfRangeException("No objects on the page");
             }
             return users;
+        }
+
+        public async Task<User> GetByIdAsync(Guid id)
+        {
+            var user = await _users.GetByIdAsync(id);
+            if (user is null)
+                throw new NullReferenceException("There is no user");
+            return user;
         }
 
         private async Task<bool> IsSameLoginInDbAsync(string login)

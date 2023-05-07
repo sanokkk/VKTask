@@ -15,5 +15,7 @@ namespace VKTask.Service.Interfaces
         Task<User> DeleteAsync(string requestedUserId, Guid id);
 
         Task<User[]> GetAsync(int page = 0);
+
+        Task<User> GetByIdAsync(Guid id);
     }
 }
