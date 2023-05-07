@@ -15,35 +15,22 @@ public class UserProfile: Profile
     public UserProfile(ApplicationDbContext context)
     {
         _context = context;
+        CreateMap<User, CreateUserDto>();
         CreateMap<CreateUserDto, User>()
+            .ForMember(dst => dst.Id,
+            opt => opt.MapFrom(src => Guid.NewGuid()))
+            .ForMember(dst => dst.UserState,
+            opt =>
+            {
+                opt.MapFrom(src => _context.UserStates.FirstOrDefault(f => f.Code == "Active"));
+            })
             .ForMember(dst => dst.UserGroup,
             opt =>
             {
-                opt.MapFrom(src => _context.UserGroups.First(f => f.UserGroupId == src.UserGroupId));
+                opt.MapFrom(src => _context.UserGroups.FirstOrDefault(f => f.UserGroupId == src.UserGroupId));
             })
-            .ForMember(dst => dst.CreatedDate, opt =>
-            {
-                opt.MapFrom(time => DateTime.UtcNow);
-            })
-            .ForMember(dst => dst.Id,
-            opt =>
-            {
-                opt.MapFrom(src => Guid.NewGuid());
-            })
-            .ForMember(dst => dst.UserGroupId,
-            opt =>
-            {
-                opt.MapFrom(src => src.UserGroupId);
-            })
-            .ForMember(dst => dst.Login,
-            opt =>
-            {
-                opt.MapFrom(src => src.Login);
-            })
-            .ForMember(dst => dst.Password,
-            opt =>
-            {
-                opt.MapFrom(src => src.Password);
-            });
+            .ForMember(dst => dst.CreatedDate,
+            opt => opt.MapFrom(src => DateTime.UtcNow));
+
     }
 }

@@ -28,8 +28,9 @@ namespace VKTask.Service.Services
         public async Task<User> CreateUserAsync(CreateUserDto userModel, CancellationTokenSource source)
         {
             source.Token.ThrowIfCancellationRequested();
-            //var user = _mapper.Map<User>(userModel);
             var user = await MapToUser(userModel);
+            /*var userMap = _mapper.Map<CreateUserDto>(user);
+            var Mapuser = _mapper.Map<User>(userMap);*/
             if (await IsSameLoginInDbAsync(user.Login))
                 throw new ArgumentException("Login already exists");
             if (user.UserGroup.Code == "Admin" && !await CanBeAdminAsync())
