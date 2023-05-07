@@ -14,7 +14,7 @@ namespace VKTask.Domain.Models
 
         public string Description { get; set; }
 
-        public ICollection<User> Users { get; init; }
+        //public ICollection<User> Users { get; init; }
 
 
     }

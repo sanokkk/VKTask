@@ -8,7 +8,7 @@ namespace VKTask.DAL
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):
             base(options)
         {
-            Database.EnsureDeleted();
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
@@ -23,10 +23,10 @@ namespace VKTask.DAL
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<User>().HasOne<UserGroup>(o => o.UserGroup)
-                .WithMany(m => m.Users)
+                .WithMany()
                 .HasForeignKey(f => f.UserGroupId);
             modelBuilder.Entity<User>().HasOne<UserState>(o => o.UserState)
-                .WithMany(m => m.Users)
+                .WithMany()
                 .HasForeignKey(f => f.UserStateId);
 
             modelBuilder.Entity<User>().HasKey(k => k.Id);

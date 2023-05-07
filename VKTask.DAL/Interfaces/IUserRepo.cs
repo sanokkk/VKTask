@@ -13,7 +13,7 @@ namespace VKTask.DAL.Interfaces
 
         Task<User> GetByIdAsync(Guid id);
 
-        Task<User> AddAsync(User user);
+        Task AddAsync(User user);
 
         Task<User> DeleteAsync(User user);
     }

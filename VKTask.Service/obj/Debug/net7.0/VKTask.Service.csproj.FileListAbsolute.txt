@@ -1,0 +1,17 @@
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask.Service\bin\Debug\net7.0\VKTask.Service.deps.json
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask.Service\bin\Debug\net7.0\VKTask.Service.dll
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask.Service\bin\Debug\net7.0\VKTask.Service.pdb
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask.Service\bin\Debug\net7.0\VKTask.DAL.dll
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask.Service\bin\Debug\net7.0\VKTask.Domain.dll
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask.Service\bin\Debug\net7.0\VKTask.DAL.pdb
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask.Service\bin\Debug\net7.0\VKTask.Domain.pdb
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask.Service\obj\Debug\net7.0\VKTask.Service.csproj.AssemblyReference.cache
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask.Service\obj\Debug\net7.0\VKTask.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask.Service\obj\Debug\net7.0\VKTask.Service.AssemblyInfoInputs.cache
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask.Service\obj\Debug\net7.0\VKTask.Service.AssemblyInfo.cs
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask.Service\obj\Debug\net7.0\VKTask.Service.csproj.CoreCompileInputs.cache
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask.Service\obj\Debug\net7.0\VKTask.Service.csproj.CopyComplete
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask.Service\obj\Debug\net7.0\VKTask.Service.dll
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask.Service\obj\Debug\net7.0\refint\VKTask.Service.dll
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask.Service\obj\Debug\net7.0\VKTask.Service.pdb
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask.Service\obj\Debug\net7.0\ref\VKTask.Service.dll

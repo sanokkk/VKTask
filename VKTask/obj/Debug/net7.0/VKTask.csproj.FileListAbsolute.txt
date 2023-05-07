@@ -40,3 +40,11 @@ C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask\obj\Debug\net7.0\refint\VKTask.
 C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask\obj\Debug\net7.0\VKTask.pdb
 C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask\obj\Debug\net7.0\VKTask.genruntimeconfig.cache
 C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask\obj\Debug\net7.0\ref\VKTask.dll
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask\bin\Debug\net7.0\VKTask.Service.dll
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask\bin\Debug\net7.0\VKTask.Service.pdb
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\san_okkk\Desktop\PROJECTS\VKTask\VKTask\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll

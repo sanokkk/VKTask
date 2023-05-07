@@ -16,11 +16,10 @@ namespace VKTask.DAL.Repos
         {
             _db = db;
         }
-        public async Task<User> AddAsync(User user)
+        public async Task AddAsync(User user)
         {
             _db.Users.Add(user);
             await _db.SaveChangesAsync();
-            return user;
         }
 
         public async Task<User> DeleteAsync(User user)
