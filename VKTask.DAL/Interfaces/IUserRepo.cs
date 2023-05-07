@@ -15,6 +15,6 @@ namespace VKTask.DAL.Interfaces
 
         Task AddAsync(User user);
 
-        Task<User> DeleteAsync(User user);
+        Task DeleteAsync(User user);
     }
 }

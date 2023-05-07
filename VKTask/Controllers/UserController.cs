@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using VKTask.Domain.Dtos;
 using VKTask.Domain.Models;
@@ -23,10 +24,16 @@ namespace VKTask.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> CreateUserAsync(CreateUserDto userModel)
         {
+            var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
             BaseResponse<User> response = new BaseResponse<User>();
             try
             {
-                response.Content = await _users.CreateUserAsync(userModel);
+                response.Content = await _users.CreateUserAsync(userModel, cts);
+            }
+            catch(OperationCanceledException)
+            {
+                _logger.Log(LogLevel.Error, "5 seconds time limit is over");
+                response.IsSuccess = false;
             }
             catch (Exception ex)
             {
@@ -35,6 +42,42 @@ namespace VKTask.Controllers
             }
 
             return (response.IsSuccess) ? Ok(response.Content) : BadRequest();            
+        }
+
+        [Authorize]
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<User>> DeleteUserAsync([FromRoute]string id)
+        {
+            BaseResponse<User> response = new BaseResponse<User>();
+            try
+            {
+                var userId = User.Claims.First(i => i.Type == "Id").Value;
+                response.Content = await _users.DeleteAsync(userId, Guid.Parse(id));
+            }
+
+            catch (HttpRequestException ex)
+            {
+                _logger.Log(LogLevel.Error, ex.Message);
+                response.IsSuccess = false;
+                return Forbid();
+            }
+            return (response.IsSuccess) ? Ok(response.Content) : BadRequest();
+        }
+
+        [HttpGet("{page}")]
+        public async Task<ActionResult<User[]>> GetAsync([FromRoute]int page = 0)
+        {
+            var response = new BaseResponse<User[]>();
+            try
+            {
+                response.Content = await _users.GetAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.Log(LogLevel.Error, ex.Message);
+                response.IsSuccess = false;
+            }
+            return (response.IsSuccess) ? Ok(response.Content) : BadRequest();
         }
     }
 }

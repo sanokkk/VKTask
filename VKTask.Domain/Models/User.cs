@@ -22,6 +22,6 @@ public class User
     public int UserGroupId { get; set; }
 
     public UserState UserState { get; set; }
-
+    
     public int UserStateId { get; set; }
 }

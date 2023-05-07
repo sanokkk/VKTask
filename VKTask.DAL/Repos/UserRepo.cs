@@ -22,15 +22,22 @@ namespace VKTask.DAL.Repos
             await _db.SaveChangesAsync();
         }
 
-        public async Task<User> DeleteAsync(User user)
+        public async Task DeleteAsync(User user)
         {
-            user.UserState = await _db.UserStates.FirstOrDefaultAsync(s => s.Description == "Blocked");
+            var newState = await _db.UserStates.FirstOrDefaultAsync(s => s.Code == "Blocked");
+            user.UserState = newState;
+            user.UserStateId = newState.UserStateId;
             await _db.SaveChangesAsync();
-            return user;
         }
 
-        public async Task<User> GetByIdAsync(Guid id) => await _db.Users.FirstOrDefaultAsync(f => f.Id == id);
+        public async Task<User> GetByIdAsync(Guid id) => await _db.Users
+            .Include(i => i.UserGroup)
+            .Include(i => i.UserState)
+            .FirstOrDefaultAsync(f => f.Id == id);
 
-        public async Task<User[]> GetUsers() => await _db.Users.ToArrayAsync();
+        public async Task<User[]> GetUsers() => await _db.Users
+            .Include(i => i.UserGroup)
+            .Include(i => i.UserState)
+            .ToArrayAsync();
     }
 }

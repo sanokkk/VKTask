@@ -10,6 +10,10 @@ namespace VKTask.Service.Interfaces
 {
     public interface IUserService
     {
-        Task<User> CreateUserAsync(CreateUserDto userModel);
+        Task<User> CreateUserAsync(CreateUserDto userModel, CancellationTokenSource source);
+
+        Task<User> DeleteAsync(string requestedUserId, Guid id);
+
+        Task<User[]> GetAsync(int page = 0);
     }
 }
