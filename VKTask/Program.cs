@@ -62,3 +62,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+//FOR TESTING
+public partial class Program { }

@@ -21,7 +21,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<User>> CreateUserAsync(CreateUserDto userModel)
+    public async Task<ActionResult<User>> CreateUserAsync([FromBody]CreateUserDto userModel)
     {
         var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
         BaseResponse<User> response = new BaseResponse<User>();

@@ -268,9 +268,21 @@
               "target": "Package",
               "version": "[7.0.5, )"
             },
+            "Microsoft.AspNetCore.TestHost": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.5, )"
+            },
+            "Microsoft.NETCore.TestHost": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.TestPlatform.TestHost": {
+              "target": "Package",
+              "version": "[17.5.0, )"
             },
             "Npgsql": {
               "target": "Package",
