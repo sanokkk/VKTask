@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace VKTask.Domain.Models;
+﻿namespace VKTask.Domain.Models;
 
 public class User
 {

@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using VKTask.DAL;
 using VKTask.DAL.Interfaces;
 using VKTask.Domain.Dtos;
 using VKTask.Domain.Models;
@@ -9,7 +8,6 @@ namespace VKTask.Service.Profiles;
 public class UserProfiles : Profile
 {
     private readonly IGroupStateRepo _db;
-    //private readonly ApplicationDbContext _db;
     public UserProfiles()
     {
         

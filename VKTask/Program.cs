@@ -32,7 +32,6 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IGroupStateRepo, GroupStateRepo>();
 
 builder.Services.AddAutoMapper(typeof(UserProfiles).Assembly);
-//builder.Services.AddScoped<UserProfile>();
 
 builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
 {

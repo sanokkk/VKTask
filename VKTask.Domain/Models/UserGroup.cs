@@ -1,21 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace VKTask.Domain.Models;
 
-namespace VKTask.Domain.Models
+public class UserGroup
 {
-    public class UserGroup
-    {
-        public int UserGroupId { get; init; }
+    public int UserGroupId { get; init; }
 
-        public string Code { get; init; }
+    public string Code { get; init; }
 
-        public string Description { get; set; }
-
-        //public ICollection<User> Users { get; init; }
-
-
-    }
+    public string Description { get; set; }
 }

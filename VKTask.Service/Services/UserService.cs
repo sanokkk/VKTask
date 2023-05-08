@@ -22,8 +22,6 @@ public class UserService: IUserService
     public async Task<User> CreateUserAsync(CreateUserDto userModel, CancellationTokenSource source)
     {
         source.Token.ThrowIfCancellationRequested();
-        //var user = await MapToUser(userModel);
-        //var userMap = _mapper.Map<CreateUserDto>(user);
         var user = _mapper.Map<User>(userModel);
         if (await IsSameLoginInDbAsync(user.Login))
             throw new ArgumentException("Login already exists");
