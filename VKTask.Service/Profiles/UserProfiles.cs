@@ -1,43 +1,57 @@
 ﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
 using VKTask.DAL;
 using VKTask.DAL.Interfaces;
 using VKTask.Domain.Dtos;
 using VKTask.Domain.Models;
 
-namespace VKTask.Service.Profiles
+namespace VKTask.Service.Profiles;
+
+public class UserProfiles : Profile
 {
-    public class UserProfiles : Profile
+    private readonly IGroupStateRepo _db;
+    //private readonly ApplicationDbContext _db;
+    public UserProfiles()
     {
-        private readonly IGroupStateRepo _context;
-        public UserProfiles(IGroupStateRepo context)
+        
+    }
+    public UserProfiles(IGroupStateRepo db)
+    {
+        CreateMap<User, CreateUserDto>();
+        _db = db;
+        CreateMap<CreateUserDto, User>()
+        .ForMember(dst => dst.Id,
+        opt => opt.MapFrom(src => Guid.NewGuid()))
+        .ForMember(dst => dst.UserStateId,
+        opt =>
+            opt.MapFrom(src => 21))
+        .ForMember(dst => dst.UserState,
+        opt =>
         {
-            _context = context;
-        }
-        public UserProfiles()
+            opt.MapFrom(src => GetState());
+        })
+        .ForMember(dst => dst.UserGroupId,
+        opt =>
         {
-            CreateMap<User, CreateUserDto>();
-            CreateMap<CreateUserDto, User>()
-            .ForMember(dst => dst.Id,
-            opt => opt.MapFrom(src => Guid.NewGuid()))
-            .ForMember(dst => dst.UserStateId,
-            opt =>
-                opt.MapFrom(src => 2))
-            .ForMember(dst => dst.UserGroupId,
-            opt =>
-            {
-                opt.MapFrom(src => src.UserGroupId);
-            })
-            .ForMember(dst => dst.CreatedDate,
-            opt => opt.MapFrom(src => DateTime.UtcNow))
-            ;
-        }
+            opt.MapFrom(src => src.UserGroupId);
+        })
+        .ForMember(dst => dst.UserGroup,
+        opt =>
+        {
+            opt.MapFrom(src => GetGroup(src.UserGroupId));
+        })
+        .ForMember(dst => dst.CreatedDate,
+        opt => opt.MapFrom(src => DateTime.UtcNow))
+        ;
+    }
+    private UserGroup GetGroup(int id)
+    {
+        var group = _db.GetGroupAsync(id).Result;
+        return group;
+    }
+
+    private UserState GetState()
+    {
+        var state = _db.GetStateAsync(1).Result;
+        return state;
     }
 }

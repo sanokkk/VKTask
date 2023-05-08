@@ -1,7 +1,6 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 using VKTask.Auth;
 using VKTask.DAL;
 using VKTask.DAL.Interfaces;
@@ -35,10 +34,10 @@ builder.Services.AddScoped<IGroupStateRepo, GroupStateRepo>();
 builder.Services.AddAutoMapper(typeof(UserProfiles).Assembly);
 //builder.Services.AddScoped<UserProfile>();
 
-/*builder.Services.AddSingleton(provider => new MapperConfiguration(cfg =>
+builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
 {
-    cfg.AddProfile(new UserProfile(provider.CreateScope().ServiceProvider.GetService<ApplicationDbContext>()));
-}));*/
+    cfg.AddProfile(new UserProfiles(provider.GetService<IGroupStateRepo>()));
+}).CreateMapper());
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
